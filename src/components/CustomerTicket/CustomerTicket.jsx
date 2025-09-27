@@ -10,7 +10,7 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
     const [task, setTask] = useState([])
     const [resolved, setResolved] = useState([])
     // const [isOpen, setIsOpen] = useState(false)
-    const [cTicket, setCTicket] = useState({})
+    const [cTicket, setCTicket] = useState(customerData)
 
 
 
@@ -23,9 +23,7 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
         const taskStatus = [...task, ticket]
         setTask(taskStatus)
         handleCard(taskStatus)
-        // toast("Task added to Task Status")
         toast("Task added to Task Status")
-        // setIsOpen(true)
     }
 
     const handleFilteredTask = (filterTask) =>{
@@ -33,11 +31,11 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
           setTask(filteredFromTaskStatus)
             
     }
-
+    
     const handleFilterTaskFromCustomerTicket = (ticket) =>{
-
-        const filteredFromCustomerTicket = customerData.filter(cTask=> cTask.ticket_id !== ticket.ticket_id)
-        setCTicket(...filteredFromCustomerTicket, cTicket)
+            const filteredFromCustomerTicket = customerData.filter(cTask=> cTask.ticket_id !== ticket.ticket_id)
+            setCTicket(filteredFromCustomerTicket)
+        
     }
     
 
@@ -57,7 +55,7 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
                    <h3 className="text-[24px] font-semibold mb-3">Customer Tickets</h3>
                    <div className="grid sm:grid-cols-2 grid-cols-1 gap-2">
                       {
-                     customerData.map(ticket=><Tickets  handleTask={handleTask} key={ticket.ticket_id} ticket={ticket}></Tickets>)
+                     cTicket.map(ticket=><Tickets  handleTask={handleTask} key={ticket.ticket_id} ticket={ticket}></Tickets>)
                       }
                    </div>
                 </div>
