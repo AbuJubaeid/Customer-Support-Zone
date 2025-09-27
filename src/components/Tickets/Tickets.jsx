@@ -14,7 +14,7 @@ const Tickets = ({ticket, handleTask}) => {
             <div onClick={()=>{
                 handleTask(ticket)
                 handleProgress()
-                }} className="bg-white rounded-xl w-[370px] h-[150px] sm:w-full p-4 cursor-pointer">
+                }} className="bg-white rounded-xl w-[370px] h-[220px] sm:h-[150px] sm:w-full p-4 cursor-pointer">
                 <div className="flex justify-between items-center">
                     <h3 className="text-[18px] font-medium">{ticket.title}</h3>
                     <p className="flex justify-between items-center gap-2 text-[16px] font-medium"><img src="https://i.ibb.co.com/RpqKGC9y/Ellipse-22.png" alt="" />{isOpen?"In-Progress" : "Open"}</p>

@@ -1,6 +1,5 @@
-
 const Task = ({task, handleResolved}) => {
-    
+  
 
     const onClickHandler = () =>{
         handleResolved(task); 

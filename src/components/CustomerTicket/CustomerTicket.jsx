@@ -6,37 +6,37 @@ import Task from "../Task/Task";
 import Tickets from "../Tickets/Tickets";
 
 const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
-    
+
     const customerData = use(customerPromise)
     const [task, setTask] = useState([])
     const [resolved, setResolved] = useState([])
-    // const [isOpen, setIsOpen] = useState(false)
     const [cTicket, setCTicket] = useState(customerData)
 
-
+    console.log("global", task)
 
     const handleTask = (ticket) =>{
-        
         if (task.find(t => t.ticket_id === ticket.ticket_id)) {
          toast("Ticket already in Task Status");
          return;
          }
         const taskStatus = [...task, ticket]
         setTask(taskStatus)
-        handleCard(task)
+        handleCard(taskStatus)
         toast("Task added to Task Status")
+        console.log(task)
     }
 
     const handleFilteredTask = (filterTask) =>{
-          const filteredFromTaskStatus = task.filter(newTask=> newTask.ticket_id !== filterTask.ticket_id)
-          setTask(filteredFromTaskStatus)
+            const filteredFromTaskStatus = task.filter(newTask=> newTask.ticket_id !== filterTask.ticket_id)
+                setTask(filteredFromTaskStatus)
+                handleCard(filteredFromTaskStatus)
+                console.log("filtered",filteredFromTaskStatus)
             
     }
     
     const handleFilterTaskFromCustomerTicket = (ticket) =>{
             const filteredFromCustomerTicket = cTicket.filter(cTask=> cTask.ticket_id !== ticket.ticket_id)
             setCTicket(filteredFromCustomerTicket)
-            // handleCard(cTicket)
         
     }
     
