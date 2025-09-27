@@ -6,6 +6,7 @@ import Task from "../Task/Task";
 import Tickets from "../Tickets/Tickets";
 
 const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
+    
     const customerData = use(customerPromise)
     const [task, setTask] = useState([])
     const [resolved, setResolved] = useState([])
@@ -22,7 +23,7 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
          }
         const taskStatus = [...task, ticket]
         setTask(taskStatus)
-        handleCard(taskStatus)
+        handleCard(task)
         toast("Task added to Task Status")
     }
 
@@ -33,8 +34,9 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
     }
     
     const handleFilterTaskFromCustomerTicket = (ticket) =>{
-            const filteredFromCustomerTicket = customerData.filter(cTask=> cTask.ticket_id !== ticket.ticket_id)
+            const filteredFromCustomerTicket = cTicket.filter(cTask=> cTask.ticket_id !== ticket.ticket_id)
             setCTicket(filteredFromCustomerTicket)
+            // handleCard(cTicket)
         
     }
     
