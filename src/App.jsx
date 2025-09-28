@@ -14,10 +14,8 @@ function App() {
   const [resolvedCard, setResolvedCard] = useState([])
 
   const handleCard = (task) =>{
-    // console.log("card value",task)
     const cardValue = [...task]
     setCard(cardValue)
-    console.log("card value",cardValue)
   }
 
   const handleResolvedCard = (task) =>{

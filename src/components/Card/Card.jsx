@@ -1,7 +1,7 @@
 
 const Card = ({card, resolvedCard}) => {
 
-    console.log("inside card", card)
+    
     return (
         <div className="flex flex-col sm:flex-row sm:justify-between items-center max-w-[1440px] mx-auto mt-15 mb-15 gap-4">
             <div className="w-[370px] sm:w-[700px] sm:h-[250px] rounded-xl flex justify-center items-center bg-linear-to-r from-[#632EE3] to-[#9F62F2]">

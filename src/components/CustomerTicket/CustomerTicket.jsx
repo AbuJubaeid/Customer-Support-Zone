@@ -12,7 +12,7 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
     const [resolved, setResolved] = useState([])
     const [cTicket, setCTicket] = useState(customerData)
 
-    console.log("global", task)
+    
 
     const handleTask = (ticket) =>{
         if (task.find(t => t.ticket_id === ticket.ticket_id)) {
@@ -23,14 +23,12 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
         setTask(taskStatus)
         handleCard(taskStatus)
         toast("Task added to Task Status")
-        console.log(task)
     }
 
     const handleFilteredTask = (filterTask) =>{
             const filteredFromTaskStatus = task.filter(newTask=> newTask.ticket_id !== filterTask.ticket_id)
                 setTask(filteredFromTaskStatus)
                 handleCard(filteredFromTaskStatus)
-                console.log("filtered",filteredFromTaskStatus)
             
     }
     
@@ -59,6 +57,7 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
                       {
                      cTicket.map(ticket=><Tickets  handleTask={handleTask} key={ticket.ticket_id} ticket={ticket}></Tickets>)
                       }
+                      
                    </div>
                 </div>
                 <div className="w-90% sm:w-[30%] sm:ml-4">
@@ -67,6 +66,10 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
                    {
                     task.map(task=><Task handleResolved={handleResolved} key={task.title} task={task}></Task>)
                    }
+                    {   task.length === 0 && (
+                        <p className="text-[#627382]">Select a ticket to add to Task Status</p>
+                        )
+                    }
                    </div>
                    <div>
                       <h3 className="text-[24px] font-semibold ">Resolved Task</h3>
@@ -74,7 +77,7 @@ const CustomerTicket = ({customerPromise, handleCard, handleResolvedCard}) => {
                         resolved.map(resolveTask=><ResolvedTask key={resolveTask.description} resolveTask={resolveTask}></ResolvedTask>)
                       }
                       {resolved.length === 0 && (
-                        <p className="">No tasks yet.</p>
+                        <p className="text-[#627382]">No tasks yet.</p>
                         )}
                    </div>
                 </div>
