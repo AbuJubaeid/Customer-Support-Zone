@@ -6,7 +6,7 @@ import CustomerTicket from './components/CustomerTicket/CustomerTicket'
 import Navbar from './components/Navbar/Navbar'
 
 
-const customerPromise = fetch('public/CustomerInfo.json')
+const customerPromise = fetch('/CustomerInfo.json')
 .then(res=>res.json())
 
 function App() {
